@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+     .main-box {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        /* 右上角区域样式 */
+     .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 按钮样式 */
+     .top-right button {
+            margin-left: 5px;
+            width: auto;
+            padding: 5px 10px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-right">
+        {% if is_logged_in %}
+        <span>你好，{{username}}</span>
+        <button onclick="location.href='/accounts/logout'">登出</button>
+        {% else %}
+        <span>欢迎访客</span>
+        <button onclick="location.href='/accounts/login'">登录</button>
+        <button onclick="location.href='/accounts/register'">注册</button>
+        {% endif %}
+    </div>
+    <div class="main-box">
+        <h2>欢迎来到主页</h2>
+        <p>这里是网站的核心页面，你可以进行各种操作哦。</p>
+        <button onclick="location.href='/problems/'" type="button">查看题目</button>
+        <button onclick="location.href='/submissions/'" type="button">查看提交记录</button>
+        <a href="/accounts/profile">查看个人资料</a>
+    </div>
+</body>
+
+</html>
